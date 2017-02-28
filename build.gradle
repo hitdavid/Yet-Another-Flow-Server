@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'rest'
+	version = '0.0.1-SNAPSHOT'
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+
+	compile project(':aflow-mini-engine')
+
+	compile('org.springframework.boot:spring-boot-starter-aop')
+	compile('org.springframework.boot:spring-boot-starter-cache')
+	compile('org.springframework.boot:spring-boot-starter-freemarker')
+	compile('org.springframework.boot:spring-boot-starter-hateoas')
+//	compile('org.springframework.session:spring-session')
+	compile('org.springframework.boot:spring-boot-starter-web')
+
+
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+}
