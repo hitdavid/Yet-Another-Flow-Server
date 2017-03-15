@@ -223,4 +223,21 @@ public class Figure implements Serializable {
     public void setVertices(ArrayList<Point> vertices) {
         this.vertices = vertices;
     }
+
+    public String toXML() {
+
+        String shape = "";
+
+        if(! this.type.equalsIgnoreCase("Connection")) {
+            shape = "<bpmndi:BPMNShape bpmnElement=\""+this.getId()+"\" id=\"BPMNShape_"+this.getId()+"\">\n"
+                + "        <omgdc:Bounds height=\""+this.getHeight()+"\" width=\""+this.getWidth()+"\" x=\""+this.getX()+"\" y=\""+this.getY()+"\"></omgdc:Bounds>\n"
+                + "      </bpmndi:BPMNShape>";
+        }
+        else {
+            shape = "      <bpmndi:BPMNEdge bpmnElement=\""+this.getId()+"\" id=\"BPMNEdge_"+this.getId()+"\">\n"
+                + "      </bpmndi:BPMNEdge>";
+        }
+
+        return shape;
+    }
 }

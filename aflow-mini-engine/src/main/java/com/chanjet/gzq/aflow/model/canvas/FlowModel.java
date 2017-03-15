@@ -1,6 +1,7 @@
 package com.chanjet.gzq.aflow.model.canvas;
 
 import com.chanjet.gzq.aflow.persistance.FlowDBHelper;
+import com.chanjet.gzq.aflow.util.BPMN_Const;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -118,5 +119,18 @@ public class FlowModel implements Serializable {
         this.userData = userData;
     }
 
+    public String toXML() {
 
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(BPMN_Const.FIGURE_HEADER);
+
+        for(Figure t : canvas) {
+            sb.append(t.toXML()+"\n");
+        }
+
+        sb.append(BPMN_Const.FIGURE_END);
+
+        return sb.toString();
+    }
 }

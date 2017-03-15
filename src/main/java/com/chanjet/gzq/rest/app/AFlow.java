@@ -2,6 +2,7 @@ package com.chanjet.gzq.rest.app;
 
 import com.chanjet.gzq.aflow.model.business.FlowDefinition;
 import com.chanjet.gzq.aflow.model.canvas.FlowModel;
+import com.chanjet.gzq.aflow.model.serializer.BPMNSerializer;
 import com.chanjet.gzq.aflow.util.JSONExtension;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +37,9 @@ public class AFlow {
         if(canSave) {
             model.save();
         }
-
-        return "Got it!" + name + " @ " + orgId + " save result is " + canSave;
+        
+        return "Got it!" + name + " @ " + orgId + " save result is " + canSave + "<br />" + BPMNSerializer
+            .toXML(model, newFLow);
     }
 
     @ResponseBody

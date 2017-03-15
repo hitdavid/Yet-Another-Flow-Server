@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xs="http://www.w3.org/2001/XMLSchema" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.2.4.Final-v20160330-1625-B110"><process id="96ee4442-97b0-83dc-b751-1166a33d5733" name="流程模版" isExecutable="true">
+<userTask id="ef1131f2-360c-faf8-2536-1d6938a6080a" name="固定人员" activiti:assignee="">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.chanjet.gongzuoquan.workflow.activiticustom.TaskCustomService"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+<userTask id="fc413a5d-5ee6-3593-2388-422cd4342006" name="管理角色" activiti:assignee="${userService.findManagerForEmployee(null)}">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.chanjet.gongzuoquan.workflow.activiticustom.TaskCustomService"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+<startEvent id="020b2f15-f4f7-304f-a2f0-df0fe7c6ebf7" name="流程开始"></startEvent>
+<userTask id="d0cb76a0-9ffe-4a7c-da75-4bca29ee45fb" name="固定人员" activiti:assignee="">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.chanjet.gongzuoquan.workflow.activiticustom.TaskCustomService"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+<exclusiveGateway id="82c5f8d9-9352-fdf0-9199-7ca37bcdd54b" name="条件分支"></exclusiveGateway>
+<endEvent id="d60e15d3-cd79-c89a-c20e-99ae5b7551c3" name="流程结束"></endEvent>
+<sequenceFlow id="2af8e9e7-9ec4-3acb-a576-7bc7a01efed3" sourceRef="ef1131f2-360c-faf8-2536-1d6938a6080a" targetRef="fc413a5d-5ee6-3593-2388-422cd4342006"></sequenceFlow>
+<sequenceFlow id="c78dfac6-4cd8-7add-7236-7c35af9edd49" sourceRef="fc413a5d-5ee6-3593-2388-422cd4342006" targetRef="82c5f8d9-9352-fdf0-9199-7ca37bcdd54b"></sequenceFlow>
+<sequenceFlow id="27b93744-cfed-8e3a-26cf-817f41f9f0fd" sourceRef="82c5f8d9-9352-fdf0-9199-7ca37bcdd54b" targetRef="d60e15d3-cd79-c89a-c20e-99ae5b7551c3"></sequenceFlow>
+<sequenceFlow id="e1bff94d-9da2-7fcc-2f3e-39ba67319184" sourceRef="020b2f15-f4f7-304f-a2f0-df0fe7c6ebf7" targetRef="ef1131f2-360c-faf8-2536-1d6938a6080a"></sequenceFlow>
+<sequenceFlow id="ed315a71-40ac-2dc3-af72-136bc7f5dd80" sourceRef="82c5f8d9-9352-fdf0-9199-7ca37bcdd54b" targetRef="d0cb76a0-9ffe-4a7c-da75-4bca29ee45fb"></sequenceFlow>
+<sequenceFlow id="cc15ed7c-e084-09af-25a4-148397b3d932" sourceRef="d0cb76a0-9ffe-4a7c-da75-4bca29ee45fb" targetRef="d60e15d3-cd79-c89a-c20e-99ae5b7551c3"></sequenceFlow>
+</process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_simpleflow">
+    <bpmndi:BPMNPlane bpmnElement="simpleflow" id="BPMNPlane_simpleflow">  <bpmndi:BPMNDiagram id="BPMNDiagram_simpleflow">
+    <bpmndi:BPMNPlane bpmnElement="simpleflow" id="BPMNPlane_simpleflow"><bpmndi:BPMNShape bpmnElement="020b2f15-f4f7-304f-a2f0-df0fe7c6ebf7" id="BPMNShape_020b2f15-f4f7-304f-a2f0-df0fe7c6ebf7">
+        <omgdc:Bounds height="30.0" width="30.0" x="156.0" y="176.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="ef1131f2-360c-faf8-2536-1d6938a6080a" id="BPMNShape_ef1131f2-360c-faf8-2536-1d6938a6080a">
+        <omgdc:Bounds height="64.0" width="96.0" x="261.0" y="159.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="fc413a5d-5ee6-3593-2388-422cd4342006" id="BPMNShape_fc413a5d-5ee6-3593-2388-422cd4342006">
+        <omgdc:Bounds height="64.0" width="96.0" x="457.0" y="159.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="82c5f8d9-9352-fdf0-9199-7ca37bcdd54b" id="BPMNShape_82c5f8d9-9352-fdf0-9199-7ca37bcdd54b">
+        <omgdc:Bounds height="96.0" width="64.0" x="675.0" y="143.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="d60e15d3-cd79-c89a-c20e-99ae5b7551c3" id="BPMNShape_d60e15d3-cd79-c89a-c20e-99ae5b7551c3">
+        <omgdc:Bounds height="30.0" width="30.0" x="1003.0" y="160.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="d0cb76a0-9ffe-4a7c-da75-4bca29ee45fb" id="BPMNShape_d0cb76a0-9ffe-4a7c-da75-4bca29ee45fb">
+        <omgdc:Bounds height="64.0" width="96.0" x="834.0" y="367.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="e1bff94d-9da2-7fcc-2f3e-39ba67319184" id="BPMNEdge_e1bff94d-9da2-7fcc-2f3e-39ba67319184">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="2af8e9e7-9ec4-3acb-a576-7bc7a01efed3" id="BPMNEdge_2af8e9e7-9ec4-3acb-a576-7bc7a01efed3">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="c78dfac6-4cd8-7add-7236-7c35af9edd49" id="BPMNEdge_c78dfac6-4cd8-7add-7236-7c35af9edd49">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="27b93744-cfed-8e3a-26cf-817f41f9f0fd" id="BPMNEdge_27b93744-cfed-8e3a-26cf-817f41f9f0fd">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ed315a71-40ac-2dc3-af72-136bc7f5dd80" id="BPMNEdge_ed315a71-40ac-2dc3-af72-136bc7f5dd80">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="cc15ed7c-e084-09af-25a4-148397b3d932" id="BPMNEdge_cc15ed7c-e084-09af-25a4-148397b3d932">
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram></definitions>

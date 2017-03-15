@@ -29,4 +29,8 @@ public class Start extends Task implements Serializable {
       // TODO Auto-generated method stub
       
     }
+
+    public String toXML() {
+        return "<startEvent id=\""+this.getId()+"\" name=\""+this.getUserData().getName()+"\"></startEvent>";
+    }
 }

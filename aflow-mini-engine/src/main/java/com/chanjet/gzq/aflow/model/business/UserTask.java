@@ -41,4 +41,12 @@ public class UserTask extends Task implements Serializable {
       //
       
     }
+
+    public String toXML() {
+        return "<userTask id=\""+this.getId()+"\" name=\""+this.getUserData().getName()+"\" activiti:assignee=\""+this.getUserData().getUserIds()+"\">\n"
+            + "      <extensionElements>\n"
+            + "        <activiti:taskListener event=\"create\" class=\"com.chanjet.gongzuoquan.workflow.activiticustom.TaskCustomService\"></activiti:taskListener>\n"
+            + "      </extensionElements>\n"
+            + "    </userTask>";
+    }
 }

@@ -29,4 +29,8 @@ public class End extends Task implements Serializable {
       // TODO Auto-generated method stub
       
     }
+
+    public String toXML() {
+        return "<endEvent id=\""+this.getId()+"\" name=\""+this.getUserData().getName()+"\"></endEvent>";
+    }
 }

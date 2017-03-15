@@ -1,5 +1,6 @@
 package com.chanjet.gzq.aflow.model.business;
 
+import com.chanjet.gzq.aflow.engine.exp.Expression;
 import com.chanjet.gzq.aflow.model.canvas.ConnectionPoint;
 import com.chanjet.gzq.aflow.model.canvas.UserProperties;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -22,6 +23,8 @@ public class Connection implements Serializable {
 
     private Task sourceTask;
     private Task targetTask;
+
+    private Expression exp;
 
     private UserProperties userData;
 
@@ -75,5 +78,27 @@ public class Connection implements Serializable {
 
     public void setTargetTask(Task targetTask) {
         this.targetTask = targetTask;
+    }
+
+    public Expression getExp() {
+        return exp;
+    }
+
+    public void setExp(Expression exp) {
+        this.exp = exp;
+    }
+
+
+    public String toXML() {
+
+        String condition = "";
+
+        if(this.exp != null) {
+            condition = "<conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${"+this.getUserData().getExpression()+"}]]></conditionExpression>";
+        }
+
+
+        return "<sequenceFlow id=\""+this.getId()+"\" sourceRef=\""+this.getSourceTask().getId()+"\" targetRef=\""+this.getTargetTask().getId()+"\">"
+            + condition + "</sequenceFlow>";
     }
 }

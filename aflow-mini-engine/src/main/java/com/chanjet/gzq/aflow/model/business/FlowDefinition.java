@@ -160,5 +160,24 @@ public class FlowDefinition implements Serializable {
       return null;
     }
 
+    public String toXML() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("<process id=\""+this.getId()+"\" name=\""+this.getUserData().getName()+"\" isExecutable=\"true\">"+"\n");
+
+        for(Task t : taskTable.values()) {
+            sb.append(t.toXML()+"\n");
+        }
+
+        for(Connection t : connectionTable.values()) {
+            sb.append(t.toXML()+"\n");
+        }
+
+        sb.append("</process>"+"\n");
+
+        return sb.toString();
+    }
+
 
 }

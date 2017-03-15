@@ -56,7 +56,7 @@ public class FlowDeserializer extends StdDeserializer<FlowDefinition> {
             JsonNode item = canvas.get(i);
             try {
                 String className = item.get("type").asText();
-                className = packageName + className.substring(className.lastIndexOf("."));
+                className = packageName + "." + className;
 
                 Class clz = (Class) Class.forName(className);
                 Object o = JSONExtension.parseObject(JSONExtension.convertNodeTreeToString(item), clz);

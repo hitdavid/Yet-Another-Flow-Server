@@ -67,4 +67,8 @@ public class BranchTask extends Task implements Serializable {
       
     }
 
+    public String toXML() {
+        return "<exclusiveGateway id=\""+this.getId()+"\" name=\""+this.getUserData().getName()+"\"></exclusiveGateway>";
+    }
+
 }

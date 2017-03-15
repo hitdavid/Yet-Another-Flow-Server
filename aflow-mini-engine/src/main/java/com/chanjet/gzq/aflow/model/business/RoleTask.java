@@ -40,4 +40,12 @@ public class RoleTask extends Task implements Serializable {
       // TODO Auto-generated method stub
       
     }
+
+    public String toXML() {
+        return "<userTask id=\""+this.getId()+"\" name=\""+this.getUserData().getName()+"\" activiti:assignee=\"${userService.findManagerForEmployee("+this.getUserData().getUserIds()+")}\">\n"
+            + "      <extensionElements>\n"
+            + "        <activiti:taskListener event=\"create\" class=\"com.chanjet.gongzuoquan.workflow.activiticustom.TaskCustomService\"></activiti:taskListener>\n"
+            + "      </extensionElements>\n"
+            + "    </userTask>";
+    }
 }

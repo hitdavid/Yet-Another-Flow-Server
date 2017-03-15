@@ -1,6 +1,7 @@
 package com.chanjet.gzq.aflow.model.business;
 
 import com.chanjet.gzq.aflow.engine.ElementBehavior;
+import com.chanjet.gzq.aflow.engine.exp.Expression;
 import com.chanjet.gzq.aflow.model.canvas.Port;
 import com.chanjet.gzq.aflow.model.canvas.UserProperties;
 import com.chanjet.gzq.aflow.server.WFContext;
@@ -37,6 +38,8 @@ public abstract class Task implements ElementBehavior {
     private HashMap<String, Connection> inputConnections;
 
     private String id;
+
+    private Expression exp;
 
     public Task() {
         outputConnections = new HashMap<String, Connection>();
@@ -110,5 +113,9 @@ public abstract class Task implements ElementBehavior {
 
     public void setUserData(UserProperties userData) {
         this.userData = userData;
+    }
+
+    public String toXML() {
+        return "";
     }
 }
